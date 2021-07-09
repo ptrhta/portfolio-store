@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Toolbar from './Toolbar';
 import ProjectList from './ProjectList';
 
@@ -16,10 +17,17 @@ export default function Portfolio(props) {
             <Toolbar
                 filters={["All", "Websites", "Flayers", "Business Cards"]}
                 selected={selected}
-                onSelectFilter={(filter) => {setSelectFilter(filter.filter);}}
+                onSelectFilter={
+                    (filter) => {
+                        setSelectFilter(filter.filter);
+                    }
+                }
             />
             <ProjectList filteredPortfolio={filteredPortfolio()} />
         </div>
     )
 }
-  
+
+Portfolio.propTypes = {
+    portfolioList:PropTypes.array.isRequired,
+};
